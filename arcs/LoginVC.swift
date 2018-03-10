@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginVC: UIViewController {
+    var jsonArray: NSMutableArray?
 
+    @IBOutlet weak var arcsImage: UIImageView!
+    @IBOutlet weak var usernameTxt: UITextField!
+    @IBOutlet weak var PasswordTxt: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +26,34 @@ class LoginVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func loginBtn(_ sender: Any) {
+        login()
     }
-    */
-
+    
+    func login(){
+        Alamofire.request( "https://arcs-api.herokuapp.com/api/login",method:.post, parameters: ["email":self.usernameTxt.text!,"password":self.PasswordTxt.text!]).responseJSON{ response in
+            print(response.response)
+            print(response.request)
+            print(response.data)
+            print(response.result)
+            
+            if let contentType = response.response?.allHeaderFields["Auth-Token"] as? String {
+                // use contentType here
+                print(contentType)
+                token = contentType
+                print("token")
+                print(token)
+            }
+            let successString: String = String(describing: response.result)
+            if (successString=="SUCCESS"){
+               let nextView = self.storyboard?.instantiateViewController(withIdentifier: "tabBarVC") as! UITabBarController
+                self.present(nextView, animated: true, completion: nil)
+            }
+            
+        }
+    }
+    
+    
+   
 }

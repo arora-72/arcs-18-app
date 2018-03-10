@@ -10,10 +10,18 @@ import UIKit
 
 class mainPageVC: UIViewController {
 
+    @IBOutlet weak var hackathonView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        hackathonView.setGradientBackground(colorOne: UIColor.red, colorTwo: UIColor.yellow)
+        
+        
+        //not working
+        //   hackathonView.layer.cornerRadius = 1000
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +30,5 @@ class mainPageVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
