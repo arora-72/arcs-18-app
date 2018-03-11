@@ -11,6 +11,7 @@ import Alamofire
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     var jsonArray: NSMutableArray?
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBOutlet weak var arcsImage: UIImageView!
     @IBOutlet weak var usernameTxt: UITextField!
@@ -22,6 +23,30 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        loginBtnT.layer.cornerRadius = 20.0
+    }
+    
+    
+    func startAnimatingIndicator(){
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    
+    func stopAnimatingIndicator(){
+        dismiss(animated: true, completion: nil
+        )
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -44,6 +69,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     func login(){
+        startAnimatingIndicator()
         Alamofire.request( "https://arcs-api.herokuapp.com/api/login",method:.post, parameters: ["email":self.usernameTxt.text!,"password":self.PasswordTxt.text!]).responseJSON{ response in
             print(response.response)
             print(response.request)
@@ -58,6 +84,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 print(token)
             }
             let successString: String = String(describing: response.result)
+            self.stopAnimatingIndicator()
             if (successString=="SUCCESS"){
                let nextView = self.storyboard?.instantiateViewController(withIdentifier: "tabBarVC") as! UITabBarController
                 self.present(nextView, animated: true, completion: nil)
@@ -68,6 +95,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
             
         }
+            
     }
     
     
