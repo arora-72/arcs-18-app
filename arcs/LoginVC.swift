@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     var jsonArray: NSMutableArray?
 
     @IBOutlet weak var arcsImage: UIImageView!
@@ -17,25 +17,28 @@ class LoginVC: UIViewController {
     @IBOutlet weak var PasswordTxt: UITextField!
     
     
-   
+    @IBOutlet weak var loginBtnT: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       loginBtnT.layer.cornerRadius = 20.0
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        unsubscribeFromKeyboardNotifications()
+//    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        subscribeToKeyboardNotifications()
+//    }
     
 
-    
     @IBAction func loginBtn(_ sender: Any) {
         login()
     }
@@ -58,21 +61,57 @@ class LoginVC: UIViewController {
             if (successString=="SUCCESS"){
                let nextView = self.storyboard?.instantiateViewController(withIdentifier: "tabBarVC") as! UITabBarController
                 self.present(nextView, animated: true, completion: nil)
-            }
+            }else if(successString=="FAILURE"){
+                let alertController = UIAlertController(title: "Sorry", message: "Please check your internet connection", preferredStyle: UIAlertControllerStyle.alert)
+                let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
             
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.usernameTxt.resignFirstResponder()
-        self.PasswordTxt.resignFirstResponder()
-        return true
-    }
+    
+    //keyboard function
+    
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        self.usernameTxt.resignFirstResponder()
+//        self.PasswordTxt.resignFirstResponder()
+//        return true
+//    }
+//
+//    func subscribeToKeyboardNotifications() {
+//        NotificationCenter.default.addObserver(self, selector: "keyboardWillShow:"    , name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: "keyboardWillHide:"    , name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+//
+//    func unsubscribeFromKeyboardNotifications() {
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
+//
+//    func keyboardWillShow(notification: NSNotification) {
+//        if PasswordTxt.isFirstResponder {
+//            view.frame.origin.y -= getKeyboardHeight(notification: notification)
+//        }
+//    }
+//
+//    func keyboardWillHide(notification: NSNotification) {
+//        if PasswordTxt.isFirstResponder{
+//            view.frame.origin.y += getKeyboardHeight(notification: notification)
+//        }
+//    }
+//
+//    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+//        let userInfo = notification.userInfo
+//        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+//        return keyboardSize.cgRectValue.height
+//    }
+
     
     
     
    
 }
-
+}
 
 

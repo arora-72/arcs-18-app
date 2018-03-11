@@ -31,9 +31,13 @@ class joinVC: UIViewController {
             print(response.result.value)
             let responseJSON = response.result.value as? [String:Any]
             if((responseJSON!["success"] as? NSNumber == 1)){
-                let alert = UIAlertController(title: "Successful", message: "Team with that name is already made", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let alert = UIAlertController(title: "Successful", message: "You have successfully joined the team", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in
+                    self.dismiss(animated: true, completion: nil)
+                }))
                 self.present(alert, animated: true, completion: nil)
+
+                
             }else{
                 let alert = UIAlertController(title: "Sorry", message: "Team with that name not found", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))

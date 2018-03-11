@@ -22,13 +22,13 @@ class teamSelectVC: UIViewController {
         dismissButton.layer.cornerRadius = dismissButton.frame.size.width / 2
         
         createTeam.layer.cornerRadius = 10
-        createTeam.layer.borderWidth = 1.0
+        
         createTeam.layer.borderColor = UIColor.white.cgColor
         joinTeamBtn.layer.cornerRadius = 10
-        joinTeamBtn.layer.borderWidth = 1.0
+        
         joinTeamBtn.layer.borderColor = UIColor.white.cgColor
         LeaveTeamBtn.layer.cornerRadius = 10
-        LeaveTeamBtn.layer.borderWidth = 1.0
+        
         LeaveTeamBtn.layer.borderColor = UIColor.white.cgColor
 
     }

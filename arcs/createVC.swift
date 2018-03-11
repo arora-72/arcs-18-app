@@ -64,7 +64,9 @@ class createVC: UIViewController {
                     teamIDG = teamID
                 }
                 let alert = UIAlertController(title: "Succesful", message: "You have successfully created your team", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    self.dismiss(animated: true, completion: nil)
+                }))
                 self.present(alert, animated: true, completion: nil)
             }
         }

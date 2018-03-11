@@ -111,7 +111,7 @@ class teamVC: UIViewController,UIViewControllerTransitioningDelegate {
 
     
     override var prefersStatusBarHidden: Bool{
-        return true
+        return false
     }
     @IBAction func refreshButtonAct(_ sender: Any) {
         fetchTeam()

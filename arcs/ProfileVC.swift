@@ -30,8 +30,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         super.viewDidLoad()
         setupActivityIndicator()
         hackathonView.setGradientBackground(colorOne: UIColor.red, colorTwo: UIColor.blue)
-        qrcodeView.layer.cornerRadius = 40
-        qrcodeimage.layer.cornerRadius = 40
+        qrcodeView.layer.cornerRadius = 10
+        qrcodeimage.layer.cornerRadius = 10
         
         //tableview
         self.tableView.dataSource = self
