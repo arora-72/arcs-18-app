@@ -19,3 +19,4 @@ struct webToken {
 
 
 var token: String?
+var teamIDG: String?

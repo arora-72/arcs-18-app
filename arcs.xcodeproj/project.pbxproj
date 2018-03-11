@@ -18,6 +18,11 @@
 		1C852A6E2054537900A330DC /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A6D2054537900A330DC /* ProfileVC.swift */; };
 		1C852A70205459EA00A330DC /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A6F205459EA00A330DC /* ProfileTableViewCell.swift */; };
 		1C852A722054725F00A330DC /* teamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A712054725F00A330DC /* teamVC.swift */; };
+		1C852A74205476D300A330DC /* circularTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A73205476D300A330DC /* circularTransitions.swift */; };
+		1C852A762054774900A330DC /* teamSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A752054774900A330DC /* teamSelectVC.swift */; };
+		1C852A782054F2C400A330DC /* createVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A772054F2C400A330DC /* createVC.swift */; };
+		1C852A7A2054F2D500A330DC /* joinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A792054F2D500A330DC /* joinVC.swift */; };
+		1C852A7C205594D100A330DC /* scheduleTImelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A7B205594D100A330DC /* scheduleTImelineTableViewCell.swift */; };
 		7E4029F8EC9A5A78A6F816C6 /* Pods_arcs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD8264664EBA4F56192AFCC /* Pods_arcs.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +40,11 @@
 		1C852A6D2054537900A330DC /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1C852A6F205459EA00A330DC /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1C852A712054725F00A330DC /* teamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamVC.swift; sourceTree = "<group>"; };
+		1C852A73205476D300A330DC /* circularTransitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circularTransitions.swift; sourceTree = "<group>"; };
+		1C852A752054774900A330DC /* teamSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamSelectVC.swift; sourceTree = "<group>"; };
+		1C852A772054F2C400A330DC /* createVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createVC.swift; sourceTree = "<group>"; };
+		1C852A792054F2D500A330DC /* joinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = joinVC.swift; sourceTree = "<group>"; };
+		1C852A7B205594D100A330DC /* scheduleTImelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleTImelineTableViewCell.swift; sourceTree = "<group>"; };
 		237B2BB76C581D82A51A2442 /* Pods-arcs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arcs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-arcs/Pods-arcs.debug.xcconfig"; sourceTree = "<group>"; };
 		9AD8264664EBA4F56192AFCC /* Pods_arcs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_arcs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0089A5F612412A3235CF0CB /* Pods-arcs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arcs.release.xcconfig"; path = "Pods/Target Support Files/Pods-arcs/Pods-arcs.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,10 +86,15 @@
 				1C852A5120542B6000A330DC /* AppDelegate.swift */,
 				1C852A5520542B6000A330DC /* Main.storyboard */,
 				1C852A6F205459EA00A330DC /* ProfileTableViewCell.swift */,
+				1C852A7B205594D100A330DC /* scheduleTImelineTableViewCell.swift */,
+				1C852A73205476D300A330DC /* circularTransitions.swift */,
 				1C852A6920544A3200A330DC /* ColorExtension.swift */,
 				1C852A67205439C100A330DC /* mainPageVC.swift */,
 				1C852A6D2054537900A330DC /* ProfileVC.swift */,
 				1C852A712054725F00A330DC /* teamVC.swift */,
+				1C852A752054774900A330DC /* teamSelectVC.swift */,
+				1C852A772054F2C400A330DC /* createVC.swift */,
+				1C852A792054F2D500A330DC /* joinVC.swift */,
 				1C852A6320542F3700A330DC /* LoginVC.swift */,
 				1C852A5820542B6000A330DC /* Assets.xcassets */,
 				1C852A5A20542B6000A330DC /* LaunchScreen.storyboard */,
@@ -203,10 +218,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-arcs/Pods-arcs-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/TimelineTableViewCell/TimelineTableViewCell.framework",
+				"${BUILT_PRODUCTS_DIR}/YXWaveView/YXWaveView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimelineTableViewCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YXWaveView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -235,13 +254,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C852A7A2054F2D500A330DC /* joinVC.swift in Sources */,
 				1C852A6E2054537900A330DC /* ProfileVC.swift in Sources */,
 				1C852A70205459EA00A330DC /* ProfileTableViewCell.swift in Sources */,
 				1C852A6C20544EF400A330DC /* Constants.swift in Sources */,
+				1C852A762054774900A330DC /* teamSelectVC.swift in Sources */,
+				1C852A74205476D300A330DC /* circularTransitions.swift in Sources */,
 				1C852A6420542F3700A330DC /* LoginVC.swift in Sources */,
 				1C852A68205439C100A330DC /* mainPageVC.swift in Sources */,
+				1C852A7C205594D100A330DC /* scheduleTImelineTableViewCell.swift in Sources */,
 				1C852A5220542B6000A330DC /* AppDelegate.swift in Sources */,
 				1C852A6A20544A3200A330DC /* ColorExtension.swift in Sources */,
+				1C852A782054F2C400A330DC /* createVC.swift in Sources */,
 				1C852A722054725F00A330DC /* teamVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

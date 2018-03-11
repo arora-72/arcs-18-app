@@ -16,17 +16,26 @@ class LoginVC: UIViewController {
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var PasswordTxt: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
+    
+    
+
+    
     @IBAction func loginBtn(_ sender: Any) {
         login()
     }
@@ -54,6 +63,16 @@ class LoginVC: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.usernameTxt.resignFirstResponder()
+        self.PasswordTxt.resignFirstResponder()
+        return true
+    }
+    
+    
     
    
 }
+
+
+

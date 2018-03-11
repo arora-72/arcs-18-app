@@ -7,29 +7,117 @@
 //
 
 import UIKit
+import Alamofire
 
-class teamVC: UIViewController {
+class teamVC: UIViewController,UIViewControllerTransitioningDelegate {
 
+    
+    @IBOutlet weak var submissionStatus: UILabel!
+    @IBOutlet weak var teamDescription: UITextView!
+    @IBOutlet weak var teamName: UILabel!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var gardientView: UIView!
+    @IBOutlet weak var refreshBtn: UIButton!
+    
+    let transition = CircularTransition()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
+        refreshBtn.layer.cornerRadius = refreshBtn.frame.size.width/2
+        gardientView.setGradientBackground(colorOne: .red, colorTwo: .blue)
+        
+        
+        //get team name
+        fetchTeam()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchTeam()
+        print("viewwill appear")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let secondVC = segue.destination as! UINavigationController
+        secondVC.transitioningDelegate = self
+        secondVC.modalPresentationStyle = .custom
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchTeam()
+    }
+    
+    func fetchTeam(){
+        let headers: HTTPHeaders = [
+            "Auth-Token": token!,
+            ]
+        Alamofire.request("https://arcs-api.herokuapp.com/api/profile", headers: headers).responseJSON{ response in
+            
+            print(response.result.value)
+            let responseJSON = response.result.value as? [String:Any]
+            var results = responseJSON!["data"] as? [String:Any]
+            
+            var teamName: String?
+            var submissionStatus: String?
+            var teamID: String?
+            var team = results!["team"] as? [String:Any]
+            if (team != nil){
+                            if let teamIDCheck = team!["team_id"] as? String{
+                                teamID = teamIDCheck
+                                self.teamDescription.text = teamIDCheck
+                
+                            }
+                            if let teamNameCheck = team!["name"] as? String{
+                                teamName = teamNameCheck
+                                self.teamName.text = teamNameCheck
+                            }
+                            if let submissionStatusCheck = team!["submissionStatus"] as? String{
+                                print(submissionStatusCheck)
+                                submissionStatus = submissionStatusCheck
+                                self.submissionStatus.text = submissionStatusCheck
+                            }
+            }else{
+                self.teamDescription.text = "nil"
+                self.teamName.text = "no team"
+                self.submissionStatus.text = "Submission Status : 0"
+            }
+
+            
+        }
+        
+        
+    }
+    
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = menuButton.center
+        transition.circleColor = menuButton.backgroundColor!
+        
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = menuButton.center
+        transition.circleColor = menuButton.backgroundColor!
+        
+        return transition
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
     }
-    */
+    @IBAction func refreshButtonAct(_ sender: Any) {
+        fetchTeam()
+    }
+    
+
+    
 
 }
