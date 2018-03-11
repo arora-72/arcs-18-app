@@ -18,6 +18,10 @@ class joinVC: UIViewController {
         self.title = "Join Team"
         teamBtn.layer.cornerRadius = 10
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 
    
     @IBAction func teamJoinAction(_ sender: Any) {

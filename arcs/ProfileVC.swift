@@ -29,7 +29,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActivityIndicator()
-        hackathonView.setGradientBackground(colorOne: UIColor.red, colorTwo: UIColor.blue)
+        
         qrcodeView.layer.cornerRadius = 10
         qrcodeimage.layer.cornerRadius = 10
         
@@ -43,7 +43,10 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
     }
 
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
     
     //fetch data
     func fetchData(){

@@ -27,12 +27,16 @@ class teamVC: UIViewController,UIViewControllerTransitioningDelegate {
         
         menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
         refreshBtn.layer.cornerRadius = refreshBtn.frame.size.width/2
-        gardientView.setGradientBackground(colorOne: .red, colorTwo: .blue)
+        
         
         
         //get team name
         fetchTeam()
         
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
     
     override func viewWillAppear(_ animated: Bool) {

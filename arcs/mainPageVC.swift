@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import YXWaveView
+
 import TimelineTableViewCell
 
 class mainPageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    fileprivate var waterView: YXWaveView?
+
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -45,7 +45,6 @@ class mainPageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let timelineTableViewCellNib = UINib(nibName: "TimelineTableViewCell",
                                              bundle: Bundle(url: nibUrl!)!)
         self.tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
-        hackathonView.setGradientBackground(colorOne: UIColor.red, colorTwo: UIColor.yellow)
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -99,11 +98,16 @@ class mainPageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         return cell
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let sectionData = data[indexPath.section] else {
             return
         }
+        
         
         print(sectionData[indexPath.row])
     }

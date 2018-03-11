@@ -23,7 +23,7 @@
 		1C852A782054F2C400A330DC /* createVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A772054F2C400A330DC /* createVC.swift */; };
 		1C852A7A2054F2D500A330DC /* joinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A792054F2D500A330DC /* joinVC.swift */; };
 		1C852A7C205594D100A330DC /* scheduleTImelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C852A7B205594D100A330DC /* scheduleTImelineTableViewCell.swift */; };
-		7E4029F8EC9A5A78A6F816C6 /* Pods_arcs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD8264664EBA4F56192AFCC /* Pods_arcs.framework */; };
+		7E4029F8EC9A5A78A6F816C6 /* Pods_arcs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD8264664EBA4F56192AFCC /* Pods_arcs.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,13 +219,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-arcs/Pods-arcs-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/TimelineTableViewCell/TimelineTableViewCell.framework",
-				"${BUILT_PRODUCTS_DIR}/YXWaveView/YXWaveView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimelineTableViewCell.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YXWaveView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

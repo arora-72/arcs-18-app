@@ -6,7 +6,7 @@ target 'arcs' do
   use_frameworks!
   # Pods for arcs
 pod 'Alamofire', '~> 4.7'
-pod 'YXWaveView'
+
 pod "TimelineTableViewCell"
 
 end

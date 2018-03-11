@@ -32,6 +32,10 @@ class teamSelectVC: UIViewController {
         LeaveTeamBtn.layer.borderColor = UIColor.white.cgColor
 
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 
     
     @IBAction func dismissBtn(_ sender: Any) {
