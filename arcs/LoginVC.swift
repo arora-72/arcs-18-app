@@ -12,6 +12,7 @@ import Alamofire
 class LoginVC: UIViewController, UITextFieldDelegate {
     var jsonArray: NSMutableArray?
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
 
     @IBOutlet weak var arcsImage: UIImageView!
     @IBOutlet weak var usernameTxt: UITextField!
@@ -77,8 +78,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             if (responseJSON!["success"] as? NSNumber) == 0{
                 self.stopAnimatingIndicator()
                 let alertController = UIAlertController(title: "Sorry", message: responseJSON!["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
-                let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: { action in
-                    self.stopAnimatingIndicator()
+                let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.destructive,handler: { action in
+                    self.dismiss(animated: true, completion: nil)
                 })
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
